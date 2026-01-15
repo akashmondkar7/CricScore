@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "292539768806",
+    "project_id": "cricscore-5f391",
+    "storage_bucket": "cricscore-5f391.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292539768806:android:97041e18c23423bfc94027",
+        "android_client_info": {
+          "package_name": "Cric.Score"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDURTWsXMfsiKBH-OQ50J29fXEOnRSjFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
