@@ -1,146 +1,112 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
+import { THEME } from "./theme/colors";
 
-export default function Dashboard() {
+export default function Home() {
   const router = useRouter();
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#0A1A44",
-        padding: 20,
-      }}
-    >
-      {/* Header */}
-      <View style={{ marginTop: 40, marginBottom: 30 }}>
-        <Text
-          style={{
-            fontSize: 36,
-            fontWeight: "bold",
-            color: "#FFFFFF",
-          }}
-        >
-          CricScore 🏏
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 15,
-            color: "#CBD5E1",
-            marginTop: 6,
-          }}
-        >
-          Your offline cricket scorebook
-        </Text>
+    <View style={styles.container}>
+      {/* HEADER */}
+      <View style={styles.header}>
+        <Text style={styles.title}>CricScore 🏏</Text>
+        <Text style={styles.subtitle}>Local Cricket Scorebook</Text>
       </View>
 
-      {/* Hero Card */}
-      <View
-        style={{
-          backgroundColor: "#102A6D",
-          borderRadius: 20,
-          padding: 20,
-          marginBottom: 30,
-        }}
-      >
-        <Text
-          style={{
-            color: "#FFFFFF",
-            fontSize: 22,
-            fontWeight: "bold",
-            marginBottom: 6,
-          }}
+      {/* ACTIONS */}
+      <View>
+        <TouchableOpacity
+          style={styles.primaryBtn}
+          onPress={() => router.push("/match-setup")}
         >
-          Ready for next match?
-        </Text>
+          <Text style={styles.primaryText}>Start New Match</Text>
+          <Text style={styles.subText}>Set teams & overs</Text>
+        </TouchableOpacity>
 
-        <Text
-          style={{
-            color: "#CBD5E1",
-            fontSize: 14,
-          }}
+        <TouchableOpacity
+          style={styles.secondaryBtn}
+          onPress={() => router.push("/history")}
         >
-          Start scoring instantly. No login. No internet.
-        </Text>
+          <Text style={styles.secondaryText}>Match History</Text>
+          <Text style={styles.subText}>Previous matches</Text>
+        </TouchableOpacity>
       </View>
 
-      {/* Action Buttons */}
-      <TouchableOpacity
-        style={{
-          backgroundColor: "#FF9933",
-          borderRadius: 18,
-          paddingVertical: 22,
-          marginBottom: 18,
-        }}
-        onPress={() => router.push("/new-match")}
-      >
-        <Text
-          style={{
-            color: "#0A1A44",
-            fontSize: 20,
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          🏏 Start New Match
-        </Text>
-
-        <Text
-          style={{
-            color: "#0A1A44",
-            textAlign: "center",
-            marginTop: 4,
-            fontSize: 13,
-          }}
-        >
-          Teams • Overs • Toss
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{
-          backgroundColor: "#1E40AF",
-          borderRadius: 18,
-          paddingVertical: 22,
-        }}
-        onPress={() => router.push("/history")}
-      >
-        <Text
-          style={{
-            color: "#FFFFFF",
-            fontSize: 18,
-            fontWeight: "600",
-            textAlign: "center",
-          }}
-        >
-          📊 Match History
-        </Text>
-
-        <Text
-          style={{
-            color: "#CBD5E1",
-            textAlign: "center",
-            marginTop: 4,
-            fontSize: 13,
-          }}
-        >
-          View completed matches
-        </Text>
-      </TouchableOpacity>
-
-      {/* Footer */}
-      <View style={{ marginTop: "auto", marginBottom: 20 }}>
-        <Text
-          style={{
-            color: "#94A3B8",
-            textAlign: "center",
-            fontSize: 12,
-          }}
-        >
-          Built for local cricket • Works offline 🇮🇳
-        </Text>
-      </View>
+      {/* FOOTER */}
+      <Text style={styles.footer}>
+        Offline • Fast • Made for Gully Cricket
+      </Text>
     </View>
   );
 }
+
+/* ================= STYLES ================= */
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: THEME.bg,
+    padding: 20,
+    justifyContent: "space-between",
+  },
+
+  header: {
+    marginTop: 40,
+    alignItems: "center",
+  },
+
+  title: {
+    fontSize: 34,
+    fontWeight: "bold",
+    color: THEME.primary,
+  },
+
+  subtitle: {
+    fontSize: 14,
+    color: THEME.muted,
+    marginTop: 6,
+  },
+
+  primaryBtn: {
+    backgroundColor: THEME.primary,
+    padding: 22,
+    borderRadius: 16,
+    marginBottom: 16,
+  },
+
+  primaryText: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+
+  secondaryBtn: {
+    backgroundColor: THEME.card,
+    padding: 22,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: THEME.border,
+  },
+
+  secondaryText: {
+    color: THEME.text,
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+
+  subText: {
+    color: THEME.muted,
+    textAlign: "center",
+    marginTop: 6,
+    fontSize: 12,
+  },
+
+  footer: {
+    color: THEME.muted,
+    textAlign: "center",
+    fontSize: 12,
+    marginBottom: 16,
+  },
+});
